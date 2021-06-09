@@ -1,0 +1,294 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot 1`] = `
+Object {
+  "Parameters": Object {
+    "AssetParameters3102a9d9b377dbc67095b39a3f90435e6b4cd76c7fd768cd6e06643cc2cb2f8fArtifactHash696692B0": Object {
+      "Description": "Artifact hash for asset \\"3102a9d9b377dbc67095b39a3f90435e6b4cd76c7fd768cd6e06643cc2cb2f8f\\"",
+      "Type": "String",
+    },
+    "AssetParameters3102a9d9b377dbc67095b39a3f90435e6b4cd76c7fd768cd6e06643cc2cb2f8fS3BucketB5BF1958": Object {
+      "Description": "S3 bucket for asset \\"3102a9d9b377dbc67095b39a3f90435e6b4cd76c7fd768cd6e06643cc2cb2f8f\\"",
+      "Type": "String",
+    },
+    "AssetParameters3102a9d9b377dbc67095b39a3f90435e6b4cd76c7fd768cd6e06643cc2cb2f8fS3VersionKey21FC5E83": Object {
+      "Description": "S3 key for asset version \\"3102a9d9b377dbc67095b39a3f90435e6b4cd76c7fd768cd6e06643cc2cb2f8f\\"",
+      "Type": "String",
+    },
+    "AssetParameters49b58bcdd348a779f57d582d61e7dcb9d3fa2c9fa346c9e1c30839d52642f9dfArtifactHash29CF223E": Object {
+      "Description": "Artifact hash for asset \\"49b58bcdd348a779f57d582d61e7dcb9d3fa2c9fa346c9e1c30839d52642f9df\\"",
+      "Type": "String",
+    },
+    "AssetParameters49b58bcdd348a779f57d582d61e7dcb9d3fa2c9fa346c9e1c30839d52642f9dfS3Bucket094A7DDB": Object {
+      "Description": "S3 bucket for asset \\"49b58bcdd348a779f57d582d61e7dcb9d3fa2c9fa346c9e1c30839d52642f9df\\"",
+      "Type": "String",
+    },
+    "AssetParameters49b58bcdd348a779f57d582d61e7dcb9d3fa2c9fa346c9e1c30839d52642f9dfS3VersionKeyFA505AF1": Object {
+      "Description": "S3 key for asset version \\"49b58bcdd348a779f57d582d61e7dcb9d3fa2c9fa346c9e1c30839d52642f9df\\"",
+      "Type": "String",
+    },
+  },
+  "Resources": Object {
+    "callerCDD24A0F": Object {
+      "DependsOn": Array [
+        "callerServiceRoleDefaultPolicyB7781121",
+        "callerServiceRole17D29371",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Ref": "AssetParameters3102a9d9b377dbc67095b39a3f90435e6b4cd76c7fd768cd6e06643cc2cb2f8fS3BucketB5BF1958",
+          },
+          "S3Key": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                Object {
+                  "Fn::Select": Array [
+                    0,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters3102a9d9b377dbc67095b39a3f90435e6b4cd76c7fd768cd6e06643cc2cb2f8fS3VersionKey21FC5E83",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "Fn::Select": Array [
+                    1,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters3102a9d9b377dbc67095b39a3f90435e6b4cd76c7fd768cd6e06643cc2cb2f8fS3VersionKey21FC5E83",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        "Environment": Object {
+          "Variables": Object {
+            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+            "eventBusName": Object {
+              "Ref": "eventBus454F24CA",
+            },
+          },
+        },
+        "Handler": "index.handler",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "callerServiceRole17D29371",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs14.x",
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "callerServiceRole17D29371": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "callerServiceRoleDefaultPolicyB7781121": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "events:PutEvents",
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "eventBus454F24CA",
+                  "Arn",
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "callerServiceRoleDefaultPolicyB7781121",
+        "Roles": Array [
+          Object {
+            "Ref": "callerServiceRole17D29371",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "eventBus454F24CA": Object {
+      "Properties": Object {
+        "Name": "testeventBus63D92E64",
+      },
+      "Type": "AWS::Events::EventBus",
+    },
+    "eventRuleAllowEventRuletestreceiver34030114BB5454EE": Object {
+      "Properties": Object {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": Object {
+          "Fn::GetAtt": Array [
+            "receiver325CA7F6",
+            "Arn",
+          ],
+        },
+        "Principal": "events.amazonaws.com",
+        "SourceArn": Object {
+          "Fn::GetAtt": Array [
+            "eventRuleCB6E2EC3",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "eventRuleCB6E2EC3": Object {
+      "Properties": Object {
+        "EventBusName": Object {
+          "Ref": "eventBus454F24CA",
+        },
+        "EventPattern": Object {
+          "source": Array [
+            "test-source",
+          ],
+        },
+        "State": "ENABLED",
+        "Targets": Array [
+          Object {
+            "Arn": Object {
+              "Fn::GetAtt": Array [
+                "receiver325CA7F6",
+                "Arn",
+              ],
+            },
+            "Id": "Target0",
+          },
+        ],
+      },
+      "Type": "AWS::Events::Rule",
+    },
+    "receiver325CA7F6": Object {
+      "DependsOn": Array [
+        "receiverServiceRoleC79ED058",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Ref": "AssetParameters49b58bcdd348a779f57d582d61e7dcb9d3fa2c9fa346c9e1c30839d52642f9dfS3Bucket094A7DDB",
+          },
+          "S3Key": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                Object {
+                  "Fn::Select": Array [
+                    0,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters49b58bcdd348a779f57d582d61e7dcb9d3fa2c9fa346c9e1c30839d52642f9dfS3VersionKeyFA505AF1",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "Fn::Select": Array [
+                    1,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters49b58bcdd348a779f57d582d61e7dcb9d3fa2c9fa346c9e1c30839d52642f9dfS3VersionKeyFA505AF1",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        "Environment": Object {
+          "Variables": Object {
+            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+          },
+        },
+        "Handler": "index.handler",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "receiverServiceRoleC79ED058",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs14.x",
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "receiverServiceRoleC79ED058": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+  },
+}
+`;
