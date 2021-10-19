@@ -2,7 +2,7 @@ import * as path from 'path';
 import { EventBus, Rule } from '@aws-cdk/aws-events';
 import { LambdaFunction } from '@aws-cdk/aws-events-targets';
 import { NodejsFunction } from '@aws-cdk/aws-lambda-nodejs';
-import { App, Construct, Stack, StackProps } from '@aws-cdk/core';
+import { App, Construct, Duration, Stack, StackProps } from '@aws-cdk/core';
 
 export class MyStack extends Stack {
   constructor(scope: Construct, id: string, props: StackProps = {}) {
@@ -20,6 +20,9 @@ export class MyStack extends Stack {
 
     const receivingLambda = new NodejsFunction(this, 'receiver', {
       entry: path.join(__dirname, 'lambda/receiver/index.ts'),
+      deadLetterQueueEnabled: true,
+      retryAttempts: 0,
+      maxEventAge: Duration.seconds(60),
     });
 
     const rule = new Rule(this, 'eventRule', {
