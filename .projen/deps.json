@@ -10,7 +10,7 @@
     },
     {
       "name": "@types/node",
-      "version": "^10.17.0",
+      "version": "^14.17.0",
       "type": "build"
     },
     {
@@ -62,7 +62,6 @@
     },
     {
       "name": "projen",
-      "version": "^0.22.12",
       "type": "build"
     },
     {
@@ -90,11 +89,6 @@
     },
     {
       "name": "@aws-cdk/aws-events",
-      "version": "^1.130.0",
-      "type": "runtime"
-    },
-    {
-      "name": "@aws-cdk/aws-iam",
       "version": "^1.130.0",
       "type": "runtime"
     },
