@@ -2,6 +2,7 @@ import * as path from 'path';
 import { EventBus, Rule } from '@aws-cdk/aws-events';
 import { LambdaFunction } from '@aws-cdk/aws-events-targets';
 import { NodejsFunction } from '@aws-cdk/aws-lambda-nodejs';
+import { Queue } from '@aws-cdk/aws-sqs';
 import { App, Construct, Duration, Stack, StackProps } from '@aws-cdk/core';
 
 export class MyStack extends Stack {
@@ -21,7 +22,7 @@ export class MyStack extends Stack {
     const receivingLambda = new NodejsFunction(this, 'receiver', {
       entry: path.join(__dirname, 'lambda/receiver/index.ts'),
       deadLetterQueueEnabled: true,
-      retryAttempts: 0,
+      retryAttempts: 1,
       maxEventAge: Duration.seconds(60),
     });
 
@@ -31,10 +32,15 @@ export class MyStack extends Stack {
         source: ['test-source'],
       },
     });
-    rule.addTarget(new LambdaFunction(receivingLambda));
+
+    const queue = new Queue(this, 'Queue');
+    rule.addTarget(new LambdaFunction(receivingLambda, {
+      deadLetterQueue: queue,
+      retryAttempts: 1,
+      maxEventAge: Duration.seconds(60),
+    }));
   }
 }
-
 
 const app = new App();
 
