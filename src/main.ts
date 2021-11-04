@@ -33,7 +33,7 @@ export class MyStack extends Stack {
       },
     });
 
-    const queue = new Queue(this, 'Queue');
+    const queue = new Queue(this, 'eventBridgeRuleDeadLetterQueue');
     rule.addTarget(new LambdaFunction(receivingLambda, {
       deadLetterQueue: queue,
       retryAttempts: 1,
