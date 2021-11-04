@@ -23,7 +23,7 @@
     },
     {
       "name": "aws-cdk",
-      "version": "^1.108.0",
+      "version": "^1.130.0",
       "type": "build"
     },
     {
@@ -80,32 +80,42 @@
     },
     {
       "name": "@aws-cdk/assert",
-      "version": "^1.108.0",
+      "version": "^1.130.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-events-targets",
-      "version": "^1.108.0",
+      "version": "^1.130.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-events",
-      "version": "^1.108.0",
+      "version": "^1.130.0",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-cdk/aws-iam",
+      "version": "^1.130.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-lambda-nodejs",
-      "version": "^1.108.0",
+      "version": "^1.130.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-lambda",
-      "version": "^1.108.0",
+      "version": "^1.130.0",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-cdk/aws-sqs",
+      "version": "^1.130.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/core",
-      "version": "^1.108.0",
+      "version": "^1.130.0",
       "type": "runtime"
     },
     {

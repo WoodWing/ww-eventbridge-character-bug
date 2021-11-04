@@ -1,12 +1,13 @@
 const { AwsCdkTypeScriptApp } = require('projen');
 const project = new AwsCdkTypeScriptApp({
-  cdkVersion: '1.108.0',
+  cdkVersion: '1.130.0',
   defaultReleaseBranch: 'master',
   name: 'ww-eventbridge-character-bug',
 
   cdkDependencies: [
     '@aws-cdk/aws-events',
     '@aws-cdk/aws-lambda',
+    '@aws-cdk/aws-sqs',
     '@aws-cdk/aws-lambda-nodejs',
     '@aws-cdk/aws-events-targets',
   ],
