@@ -18,7 +18,7 @@
     "projen": "npx projen"
   },
   "devDependencies": {
-    "@types/aws-lambda": "^8.10.85",
+    "@types/aws-lambda": "^8.10.89",
     "@types/jest": "^26.0.24",
     "@types/node": "^14.17.0",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
@@ -27,15 +27,15 @@
     "eslint": "^7.32.0",
     "eslint-import-resolver-node": "^0.3.6",
     "eslint-import-resolver-typescript": "^2.5.0",
-    "eslint-plugin-import": "^2.25.2",
-    "jest": "^27.3.1",
+    "eslint-plugin-import": "^2.25.4",
+    "jest": "^27.4.5",
     "jest-junit": "^12",
-    "json-schema": "^0.3.0",
+    "json-schema": "^0.4.0",
     "npm-check-updates": "^11",
     "projen": "^0.32.6",
-    "ts-jest": "^27.0.7",
+    "ts-jest": "^27.1.2",
     "ts-node": "^9",
-    "typescript": "^4.4.4"
+    "typescript": "^4.5.4"
   },
   "dependencies": {
     "@aws-cdk/assert": "^1.130.0",
@@ -45,8 +45,8 @@
     "@aws-cdk/aws-lambda-nodejs": "^1.130.0",
     "@aws-cdk/aws-sqs": "^1.130.0",
     "@aws-cdk/core": "^1.130.0",
-    "@aws-sdk/client-eventbridge": "^3.39.0",
-    "aws-lambda": "^1.0.6"
+    "@aws-sdk/client-eventbridge": "^3.45.0",
+    "aws-lambda": "^1.0.7"
   },
   "bundledDependencies": [],
   "license": "Apache-2.0",
